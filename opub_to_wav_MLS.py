@@ -39,13 +39,13 @@ for speaker in speaker_dirs:
 
       else:
         os.makedirs(folder_to_be_created)
-    #   for file in os.listdir(folder):
-    #     file_path = os.path.join(folder,file)
-    #     save_path = os.path.join(folder_to_be_created, file.replace('opus', 'wav'))
-    #     wf = subprocess.Popen(['ffmpeg', '-loglevel', 'quiet', '-i',
-    #                       file_path,
-    #                       '-ar', str(sample_rate) , '-ac', '1', '-y', save_path],
-    #                       stdout=subprocess.PIPE)
+      for file in os.listdir(folder):
+        file_path = os.path.join(folder,file)
+        save_path = os.path.join(folder_to_be_created, file.replace('opus', 'wav'))
+        wf = subprocess.Popen(['ffmpeg', '-loglevel', 'quiet', '-i',
+                          file_path,
+                          '-ar', str(sample_rate) , '-ac', '1', '-y', save_path],
+                          stdout=subprocess.PIPE)
 
       # print("Before Removing")
       # total, used, free = shutil.disk_usage('/content/mls_german_opus')
