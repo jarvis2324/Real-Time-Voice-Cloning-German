@@ -19,3 +19,6 @@
 encoder/saved_models/*
 synthesizer/saved_models/*
 vocoder/saved_models/*
+Dataset_2/*
+Datasets/*
+training/*
