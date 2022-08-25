@@ -7,7 +7,7 @@ import subprocess
 import shutil
 
 
-datasets_root = '/mnt/disks/drive_1000/Download/mls_german_opus/train'
+datasets_root = '/mnt/disks/drive_1000/Download/mls_german_wav/train'
 wav_folders = []
 print("Searching speakers...")
 #speaker dir
@@ -31,7 +31,7 @@ for speaker in speaker_dirs:
   #print(speaker_subfolders)
   for folder in speaker_subfolders:
     print(folder)
-    folder_to_be_created = folder.replace('mls_german_opus','mls_german_wav')
+    #folder_to_be_created = folder.replace('mls_german_opus','mls_german_wav')
     # if os.path.exists(folder_to_be_created):
     #   pass
 
@@ -40,7 +40,7 @@ for speaker in speaker_dirs:
     for file in os.listdir(folder):
       file_path = os.path.join(folder,file)
       text_file = os.path.join(folder,file.replace('wav', 'txt'))
-      print(text_file)
+      #print(text_file)
       file = file.replace('.wav', '')
       #print(file)
       for line in lines:
