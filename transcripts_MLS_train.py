@@ -40,6 +40,7 @@ for speaker in speaker_dirs:
     for file in os.listdir(folder):
       file_path = os.path.join(folder,file)
       text_file = os.path.join(folder,file.replace('wav', 'txt'))
+      print(text_file)
       file = file.replace('.wav', '')
       #print(file)
       for line in lines:
