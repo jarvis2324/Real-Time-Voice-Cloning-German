@@ -11,3 +11,4 @@ print("Searching speakers...")
 #speaker dir
 speaker_search_dir = os.path.join(datasets_root, "audio//*")
 speaker_dirs = glob(speaker_search_dir)
+print(speaker_dirs)
