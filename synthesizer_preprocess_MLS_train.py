@@ -9,7 +9,7 @@ out_dir = Path(out_dir)
 out_dir.mkdir(exist_ok=True, parents=True)
 
 subfolders = ""
-for file_name in os.listdir('/content/drive/MyDrive/mls_german_wav/train/audio'):
+for file_name in os.listdir('/mnt/disks/drive_1000/Download/mls_german_wav/train/audio'):
   subfolders = subfolders + file_name + ","
 
 
