@@ -182,7 +182,7 @@ def preprocess_speaker(speaker_dir, out_dir: Path, skip_existing: bool, hparams,
             extensions = ["*.wav"]
             for extension in extensions:
                 search_path = os.path.join(speaker_dir_temp, extension)
-                #print("Search path: " + str(search_path))
+                print("Search path: " + str(search_path))
                 # wav_fpaths = glob(search_path)
                 wav_fpaths = glob(search_path)
                 #print("Wav FPaths", wav_fpaths)
