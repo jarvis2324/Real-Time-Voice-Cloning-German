@@ -175,7 +175,7 @@ def preprocess_speaker(speaker_dir, out_dir: Path, skip_existing: bool, hparams,
         #     continue
         # print("Book dir: " + str(book_dir))
         #print(book_dir)
-        if '.wav' in book_dir:
+        if '.wav' in str(book_dir):
                 
 
             wav_fpath = book_dir
