@@ -181,32 +181,31 @@ def preprocess_speaker(speaker_dir, out_dir: Path, skip_existing: bool, hparams,
             wav_fpath = book_dir
             #print("Wav path: " + str(wav_fpath))
             # Load the audio waveform
-            # wav, _ = librosa.load(str(wav_fpath), hparams.sample_rate)
-            # if hparams.rescale:
-            #     wav = wav / np.abs(wav).max() * hparams.rescaling_max
+            wav, _ = librosa.load(str(wav_fpath), hparams.sample_rate)
+            if hparams.rescale:
+                wav = wav / np.abs(wav).max() * hparams.rescaling_max
 
             # Get the corresponding text
             # Check for .txt (for compatibility with other datasets)
             text_fpath = wav_fpath.with_suffix(".txt")
-            print(text_fpath)
             #print("Text Fpath", text_fpath)
-    #         if not text_fpath.exists():
-    #             print("Text_fpath does not exist: " + str(text_fpath))
-    #             # Check for .normalized.txt (LibriTTS)
-    #             text_fpath = wav_fpath.with_suffix(".normalized.txt")
-    #             #assert text_fpath.exists()
-    #             if not text_fpath.exists():
-    #                 continue
-    #         with text_fpath.open("r", encoding="utf-8") as text_file:
-    #             text = "".join([line for line in text_file])
-    #             text = text.replace("\"", "")
-    #             text = text.strip()
+            if not text_fpath.exists():
+                print("Text_fpath does not exist: " + str(text_fpath))
+                # Check for .normalized.txt (LibriTTS)
+                text_fpath = wav_fpath.with_suffix(".normalized.txt")
+                #assert text_fpath.exists()
+                if not text_fpath.exists():
+                    continue
+            with text_fpath.open("r", encoding="utf-8") as text_file:
+                text = "".join([line for line in text_file])
+                text = text.replace("\"", "")
+                text = text.strip()
 
-    #         #print("Text is", text)
-    #         # Process the utterance
-    #         metadata.append(process_utterance(wav, text, out_dir, str(wav_fpath.with_suffix("").name),
-    #                                             skip_existing, hparams))
-    #     #print(metadata)
-    # return [m for m in metadata if m is not None]
+            #print("Text is", text)
+            # Process the utterance
+            metadata.append(process_utterance(wav, text, out_dir, str(wav_fpath.with_suffix("").name),
+                                                skip_existing, hparams))
+        #print(metadata)
+    return [m for m in metadata if m is not None]
 
 preprocess_dataset(datasets_root,out_dir,n_processes,skip_existing,hparams,no_alignments,datasets_name,subfolders,wav_dir)
