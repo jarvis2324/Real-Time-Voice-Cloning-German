@@ -174,21 +174,22 @@ def preprocess_speaker(speaker_dir, out_dir: Path, skip_existing: bool, hparams,
         #     print("" + str(book_dir) + " is not a directory.")
         #     continue
         # print("Book dir: " + str(book_dir))
-        print(book_dir)
-    #     if '.wav' in book_dir:
+        #print(book_dir)
+        if '.wav' in book_dir:
                 
 
-    #         wav_fpath = Path(wav_fpath)
-    #         #print("Wav path: " + str(wav_fpath))
-    #         # Load the audio waveform
-    #         wav, _ = librosa.load(str(wav_fpath), hparams.sample_rate)
-    #         if hparams.rescale:
-    #             wav = wav / np.abs(wav).max() * hparams.rescaling_max
+            wav_fpath = book_dir
+            #print("Wav path: " + str(wav_fpath))
+            # Load the audio waveform
+            # wav, _ = librosa.load(str(wav_fpath), hparams.sample_rate)
+            # if hparams.rescale:
+            #     wav = wav / np.abs(wav).max() * hparams.rescaling_max
 
-    #         # Get the corresponding text
-    #         # Check for .txt (for compatibility with other datasets)
-    #         text_fpath = wav_fpath.with_suffix(".txt")
-    #         #print("Text Fpath", text_fpath)
+            # Get the corresponding text
+            # Check for .txt (for compatibility with other datasets)
+            text_fpath = wav_fpath.with_suffix(".txt")
+            print(text_fpath)
+            #print("Text Fpath", text_fpath)
     #         if not text_fpath.exists():
     #             print("Text_fpath does not exist: " + str(text_fpath))
     #             # Check for .normalized.txt (LibriTTS)
