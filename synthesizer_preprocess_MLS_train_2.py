@@ -141,7 +141,7 @@ def preprocess_dataset(datasets_root: Path, out_dir: Path, n_processes: int,
     job = Pool(n_processes).imap(func, speaker_dirs)
     #print("Job is", job)
     for speaker_metadata in tqdm(job, datasets_name, len(speaker_dirs), unit="speakers"):
-        #print("Speaker metadata: " + str(speaker_metadata))
+        print("Speaker metadata: " + str(speaker_metadata))
         for metadatum in speaker_metadata:
             metadata_file.write("|".join(str(x) for x in metadatum) + "\n")
     metadata_file.close()
