@@ -90,7 +90,7 @@ def process_utterance(wav: np.ndarray, text: str, out_dir: Path, basename: str,
     # Write the spectrogram, embed and audio to disk
     np.save(mel_fpath, mel_spectrogram.T, allow_pickle=False)
     np.save(wav_fpath, wav, allow_pickle=False)
-    print("Saved File", mel_fpath, " ", wav_fpath)
+    #print("Saved File", mel_fpath, " ", wav_fpath)
     # with open('/content/file_written.txt','a') as f:
     #   f.write("writing" + str(wav_fpath) + " mel" +  str(mel_fpath))
     #   f.write("\n")
