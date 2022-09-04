@@ -77,6 +77,7 @@ def process_utterance(wav: np.ndarray, text: str, out_dir: Path, basename: str,
     
     # Skip utterances that are too short
     if len(wav) < hparams.utterance_min_duration * hparams.sample_rate:
+        print("Skipping Utterance because they are too short")
         return None
     
     # Compute the mel spectrogram
@@ -85,6 +86,7 @@ def process_utterance(wav: np.ndarray, text: str, out_dir: Path, basename: str,
     
     # Skip utterances that are too long
     if mel_frames > hparams.max_mel_frames and hparams.clip_mels_length:
+        print("Skipping Utterance because they are too long")
         return None
     
     # Write the spectrogram, embed and audio to disk
@@ -139,7 +141,7 @@ def preprocess_dataset(datasets_root: Path, out_dir: Path, n_processes: int,
     job = Pool(n_processes).imap(func, speaker_dirs)
     #print("Job is", job)
     for speaker_metadata in tqdm(job, datasets_name, len(speaker_dirs), unit="speakers"):
-        print("Speaker metadata: " + str(speaker_metadata))
+        #print("Speaker metadata: " + str(speaker_metadata))
         for metadatum in speaker_metadata:
             metadata_file.write("|".join(str(x) for x in metadatum) + "\n")
     metadata_file.close()
