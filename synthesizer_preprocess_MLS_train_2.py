@@ -77,7 +77,7 @@ def process_utterance(wav: np.ndarray, text: str, out_dir: Path, basename: str,
     
     # Skip utterances that are too short
     if len(wav) < hparams.utterance_min_duration * hparams.sample_rate:
-        print("Skipping Utterance because they are too short")
+        #print("Skipping Utterance because they are too short")
         return None
     
     # Compute the mel spectrogram
@@ -86,7 +86,7 @@ def process_utterance(wav: np.ndarray, text: str, out_dir: Path, basename: str,
     
     # Skip utterances that are too long
     if mel_frames > hparams.max_mel_frames and hparams.clip_mels_length:
-        print("Skipping Utterance because they are too long")
+        #print("Skipping Utterance because they are too long")
         return None
     
     # Write the spectrogram, embed and audio to disk
